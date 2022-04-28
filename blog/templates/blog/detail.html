@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+{% block main %}
+{% block title %}
+{% endblock %}
+    <h1>{{post_title}}</h1>
+    <h2>{{post_content}}</h2>
+    {% if post_image %}
+    <img src="{{post_image.url}}" alt="">
+    {% endif %}
+    <a href="/blog/post-edit/{{post_id}}/">수정하기</a>
+    <form action="/blog/post-delete/{{post_id}}/" method="post">
+        {% csrf_token %}
+        <input type="submit" value="삭제">
+    </form>
+{% endblock %}
